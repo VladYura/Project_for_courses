@@ -1,0 +1,161 @@
+<!-- Основной шаблон для сайта -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <!-- Meta Tag -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block head %}{% endblock head %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="144x144" type="image/x-icon"
+          href="{% static 'images/favicon/apple-touch-icon.png' %}">
+
+    <!-- All CSS Plugins -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/plugin.css' %}"><!-- css/plugin.css -->
+
+    <!-- Main CSS Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"><!-- css/style.css -->
+
+    <!-- Google Web Fonts  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700">
+
+
+    <!-- HTML5 shiv and Respond.js support IE8 or Older for HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+
+<!-- Preloader Start -->
+<div class="preloader">
+    <div class="rounder"></div>
+</div>
+<!-- Preloader End -->
+
+
+<div id="main">
+    <div class="container">
+        <div class="row">
+
+
+            <!-- About Me (Left Sidebar) Start -->
+            <div class="col-md-3">
+                <div class="about-fixed">
+
+                    <div class="my-pic">
+                        <img src="{% static 'images/name2.jpg' %}" alt="">
+                        <a href="javascript:void(0)" class="collapsed" data-target="#menu" data-toggle="collapse"><i
+                                class="icon-menu menu"></i></a>
+                        <div id="menu" class="collapse">
+                            <ul class="menu-link">
+                                <li><a href="/about.html">About</a></li>
+                                <li><a href="/work.html">Work</a></li>
+                                <li><a href="/contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="my-detail">
+
+                        <div class="white-spacing">
+                            <h1>Vladislav Yurashevich</h1>
+                            <span>Backend developer</span>
+                        </div>
+
+                        <ul class="social-icon">
+                            <li><a href="https://vk.com/vladyurashevich" target="_blank" class="vk"><i class="fa fa-vk"></i></a></li>
+                            <li><a href="https://www.instagram.com/vlad.urashevich/" target="_blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/%D0%B2%D0%BB%D0%B0%D0%B4%D0%B8%D1%81%D0%BB%D0%B0%D0%B2-%D1%8E%D1%80%D0%B0%D1%88%D0%B5%D0%B2%D0%B8%D1%87-559138224/" target="_blank" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="https://github.com/VladYura" target="_blank" class="github"><i class="fa fa-github"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!-- About Me (Left Sidebar) End -->
+
+
+            <!-- Blog Post (Right Sidebar) Start -->
+            <div class="col-md-9">
+                <div class="col-md-12 page-body">
+                    <div class="row">
+
+
+                        <div class="sub-title">
+                            <h2>{% block title %} {% endblock title %}</h2>
+                            {% block conteiner %} {% endblock conteiner %}
+                        </div>
+
+
+                        <div class="col-md-12 content-page">
+                            {% block content %}
+
+                            {% endblock content %}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Footer Start -->
+                <div class="col-md-12 page-body margin-top-50 footer">
+                    <footer>
+                        <ul class="menu-link">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/about.html">About</a></li>
+                            <li><a href="/work.html">Work</a></li>
+                            <li><a href="/contact.html">Contact</a></li>
+                        </ul>
+
+                        <p>© Copyright 2016 DevBlog. All rights reserved</p>
+
+
+                        <!-- UiPasta Credit Start -->
+                        <div class="uipasta-credit">Design By <a href="http://www.uipasta.com"
+                                                                 target="_blank">UiPasta</a></div>
+                        <!-- UiPasta Credit End -->
+
+
+                    </footer>
+                </div>
+                <!-- Footer End -->
+
+
+            </div>
+            <!-- Blog Post (Right Sidebar) End -->
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Back to Top Start -->
+<a href="#" class="scroll-to-top"><i class="fa fa-long-arrow-up"></i></a>
+<!-- Back to Top End -->
+
+
+<!-- All Javascript Plugins  -->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugin.js' %}"></script>
+
+<!-- Main Javascript File  -->
+<script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+
+
+</body>
+</html>

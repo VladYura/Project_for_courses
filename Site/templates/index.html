@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}My Blog{% endblock head %}
+
+{% block title %}My Blog{% endblock title %}
+
+{% block conteiner %}<a href="contact.html"><i class="icon-envelope"></i></a>{% endblock conteiner %}
+
+{% block content %}
+<!-- Blog Post Start -->
+{% for new in news %}
+<div class="col-md-12 blog-post">
+    <div class="post-title">
+        <a href="{% url 'single' new.url %}"><h1>{{ new.title }}</h1></a>
+    </div>
+    <div class="post-info">
+        <span>{{ new.date }} / by <a href="#" target="_blank">{{ new.name }}</a></span>
+    </div>
+    <p>{{ new.description }}</p>
+    <a href="{% url 'single' new.url %}" class="button button-style button-anim fa fa-long-arrow-right"><span>Читать больше</span></a>
+</div>
+{% endfor %}
+<!-- Blog Post End -->
+
+
+<div class="col-md-12 text-center">
+    <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
+    <div id="post-end-message"></div>
+</div>
+{% endblock content %}

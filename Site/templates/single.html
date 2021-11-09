@@ -1,0 +1,99 @@
+﻿{% extends 'base.html' %}
+
+{% block head %}{{ news.title }}{% endblock head %}
+
+{% block title %}Back Home{% endblock title %}
+
+{% block conteiner %}<a href="/"><i class="icon-home"></i></a>{% endblock conteiner %}
+
+{% block content %}
+<div class="col-md-12 blog-post">
+
+
+    <!-- Post Headline Start -->
+    <div class="post-title">
+        <h1>{{ news.title }}</h1>
+    </div>
+    <!-- Post Headline End -->
+
+
+    <!-- Post Detail Start -->
+    <div class="post-info">
+        <span>{{ news.date }} / by <a href="#" target="_blank">{{ news.name }}</a></span>
+    </div>
+    <!-- Post Detail End -->
+
+
+    <p>{{ news.text }}</p>
+
+
+
+
+
+    <!-- Post Comment (Disqus) Start -->
+    <div id="comment" class="comment">
+        <h3>Discuss about post</h3>
+
+
+        <!-- Disqus Code Start  (Please Note: Disqus will not be load on local, You have to upload it on server.)-->
+        <div class="row margin-top-30">
+            <div class="col-md-12">
+
+                <div class="row">
+                    <form action="{% url 'add_review' news.id %}" method="post" id="formReview">
+                        {% csrf_token %}<!--Токен защиты-->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="text" id="name" class="form-control" name="name"
+                                       placeholder="Your Name">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-control" name="email"
+                                       placeholder="Your Email">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="textarea-message form-group">
+                                <textarea id="message" class="textarea-message form-control" name="text"
+                                          placeholder="Your Message" rows="5"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="text-center">
+                            <button type="submit" class="load-more-button">Send</button>
+                        </div>
+
+                    </form>
+                    {% for review in news.reviews_set.all %}
+                    <div class="about-author margin-top-70 margin-bottom-50">
+
+                        <div class="picture">
+                            <img src="images/blog/author.png" class="img-responsive" alt="">
+                        </div>
+
+                        <div class="c-padding">
+                            <h3>
+                                {{ review.name }}
+                            </h3>
+                            <p>
+                                {{ review.text }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Disqus Code End -->
+
+    </div>
+    <!-- Post Comment (Disqus) End -->
+
+
+</div>
+{% endblock content %}

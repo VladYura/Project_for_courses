@@ -1,0 +1,81 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block head %}My Portfolio{% endblock head %}
+
+{% block title %}My Portfolio{% endblock title %}
+
+{% block conteiner %}<a href="contact.html"><i class="icon-envelope"></i></a>{% endblock conteiner %}
+
+{% block content %}
+<div class="col-md-12 blog-post">
+
+
+    <!-- Intro Start -->
+    <div class="post-title margin-bottom-30">
+        <h1>Let's take a look on <span class="main-color">My Work</span></h1>
+    </div>
+    <!-- Intro End -->
+
+
+    <!-- Portfolio Start -->
+    <div>
+
+        {% for work in works %}
+        <!-- Portfolio Detail Start -->
+        <div class="row portfolio">
+            <div class="col-sm-6 custom-pad-1">
+                <img src="{{ work.image.url }}" class="img-responsive" alt="">
+            </div>
+
+
+            <div class="col-sm-6 custom-pad-2">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+
+                        <tr>
+                            <td><b>Title</b></td>
+                            <td>{{ work.name }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Skills</b></td>
+                            <td>{{ work.skills }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Duration</b></td>
+                            <td>{{ work.duration }}</td>
+                        </tr>
+
+                        <tr>
+                            <td><b>Url</b></td>
+                            <td><a href="{{ work.url }}">GitHub</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><b>About Project</b></td>
+                            <td>{{ work.about }}</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Detail End -->
+        {% endfor %}
+
+    </div>
+    <!-- Portfolio End -->
+
+
+</div>
+
+<div class="col-md-12 text-center">
+    <a href="javascript:void(0)" id="load-more-portfolio" class="load-more-button">Load</a>
+    <div id="portfolio-end-message"></div>
+</div>
+{% endblock content %}

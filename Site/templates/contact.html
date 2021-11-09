@@ -1,0 +1,130 @@
+﻿{% extends 'base.html' %}
+
+{% block head %}Contact Me{% endblock head %}
+
+{% block title %}Contact Me{% endblock title %}
+
+{% block conteiner %}<a href="/"><i class="icon-home"></i></a>{% endblock conteiner %}
+
+{% block content %}
+<div class="col-md-12 blog-post">
+
+
+    <!-- Testimonials Start -->
+    <div class="post-title margin-top-50">
+        <h2>I hope you've checked <a href="work.html" data-toggle="tooltip"
+                                     data-placement="top" title="Check out my work.">my
+            work</a>, Let's take a look on what other clients said about my work.</h2>
+    </div>
+
+
+    <div class="row">
+        {% for feedback in feedbacks %}
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="testimonial-content">
+                <p>{{ feedback.text }}</p>
+            </div>
+
+            <div class="testimonial-client-info">
+
+                <div class="testimonial-client client-thumb">
+                    <img src="images/testimonial/1.png" alt="">
+                </div>
+
+                <div class="client-text">
+                    <div class="client-name">{{ feedback.name }}</div>
+                    <span>{{ feedback.work }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Testimonials  End -->
+
+    <div class="col-md-12 text-center">
+        <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
+        <div id="post-end-message"></div>
+    </div>
+
+    <!-- Contact Me Start -->
+    <div class="post-title margin-top-70">
+        <h1>Contact <span class="main-color">Me</span></h1>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-4 col-sm-4">
+            <div class="contact-us-detail">
+                <i class="icon-screen-smartphone color-6"></i>
+                <p>+375 (44) 773-79-95</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="contact-us-detail">
+                <i class="icon-envelope-open color-5"></i>
+                <p>vlad.yurashevich02@mail.ru</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-4">
+            <div class="contact-us-detail">
+                <i class="icon-clock color-3"></i>
+                <p>Mon - Fri 09:00 – 18:00</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="post-title margin-top-70">
+        <h1>Leave <span class="main-color">Feedback</span></h1>
+    </div>
+
+    <div class="row margin-top-30">
+        <div class="col-md-12">
+
+            <div class="row">
+                <form action="{% url 'add_feedback' %}" method="post">
+                    {% csrf_token %}<!--Токен защиты-->
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" id="name" class="form-control" name="name"
+                                   placeholder="Your Name">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="email" id="email" class="form-control" name="email"
+                                   placeholder="Your Email">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input type="text" id="website" class="form-control" name="work"
+                                   placeholder="Where are you work?">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12">
+                        <div class="textarea-message form-group">
+                            <textarea id="message" class="textarea-message form-control" name="text"
+                                      placeholder="Your Message" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="load-more-button">Send</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Me End -->
+
+
+</div>
+{% endblock content %}
